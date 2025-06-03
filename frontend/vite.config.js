@@ -1,11 +1,17 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import netlify from 'vite-plugin-netlify';
+import { viteStaticCopy } from 'vite-plugin-static-copy'; // 👈 this one copies _redirects
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    netlify()
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/_redirects',
+          dest: '.', // root of dist
+        },
+      ],
+    }),
   ],
 });
