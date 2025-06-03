@@ -26,7 +26,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         String token = jwtUtils.generateJwtToken(userPrincipal.getUsername(), userPrincipal.getName());
 
 
-        String redirectUrl = "http://localhost:5173/auth/callback?token=" + token;
+        String redirectUrl = "https://xenocustomer.netlify.app/auth/callback?token=" + token;
+
         response.sendRedirect(redirectUrl);
     }
 }
